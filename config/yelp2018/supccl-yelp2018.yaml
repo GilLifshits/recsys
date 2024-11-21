@@ -51,3 +51,5 @@ test_data_step: 256
 
 neg_sampling:
     uniform: 1
+
+NEG_PREFIX: 'neg_'
