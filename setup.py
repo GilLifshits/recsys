@@ -3,14 +3,17 @@ from __future__ import print_function
 from __future__ import division
 
 import os
+from setuptools import setup, find_packages, Extension
+from Cython.Build import cythonize
+import numpy as np
 
-from setuptools import setup, find_packages
+install_requires = [
+    'numpy>=1.17.2', 'torch>=1.7.0', 'scipy==1.6.0', 'pandas>=1.0.5', 'tqdm>=4.48.2',
+    'colorlog==4.7.2', 'colorama==0.4.4',
+    'scikit_learn>=0.23.2', 'pyyaml>=5.1.0', 'tensorboard>=2.5.0'
+]
 
-install_requires = ['numpy>=1.17.2', 'torch>=1.7.0', 'scipy==1.6.0', 'pandas>=1.0.5', 'tqdm>=4.48.2',
-                    'colorlog==4.7.2','colorama==0.4.4',
-                    'scikit_learn>=0.23.2', 'pyyaml>=5.1.0', 'tensorboard>=2.5.0']
-
-setup_requires = []
+setup_requires = ['cython']
 
 extras_require = {
     'hyperopt': ['hyperopt>=0.2.4']
@@ -28,6 +31,15 @@ long_description = 'RecBole is developed based on Python and PyTorch for ' \
                    'Knowledge-based Recommendation. View RecBole homepage ' \
                    'for more information: https://recbole.io'
 
+# Specify the Cython extension modules
+extensions = [
+    Extension(
+        "recbole.util.cython.random_choice",
+        ["recbole/util/cython/random_choice.pyx"],
+        include_dirs=[np.get_include()]
+    )
+]
+
 # Readthedocs requires Sphinx extensions to be specified as part of
 # install_requires in order to build properly.
 on_rtd = os.environ.get('READTHEDOCS', None) == 'True'
@@ -36,8 +48,7 @@ if on_rtd:
 
 setup(
     name='recbole',
-    version=
-    '1.0.0',  # please remember to edit recbole/__init__.py in response, once updating the version
+    version= '1.0.0',
     description='A unified, comprehensive and efficient recommendation library',
     long_description=long_description,
     long_description_content_type="text/markdown",
@@ -54,4 +65,5 @@ setup(
     extras_require=extras_require,
     zip_safe=False,
     classifiers=classifiers,
+    ext_modules=cythonize(extensions),
 )
