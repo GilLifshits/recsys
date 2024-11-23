@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="PublishConfigData" autoUpload="Always" serverName="gillif@132.72.66.155:22 password" remoteFilesAllowedToDisappearOnAutoupload="false" confirmBeforeUploading="false">
+  <component name="PublishConfigData" autoUpload="Always" serverName="gillif@132.72.67.229:22 password" remoteFilesAllowedToDisappearOnAutoupload="false" confirmBeforeUploading="false">
     <option name="confirmBeforeUploading" value="false" />
     <serverData>
       <paths name="gillif@132.72.66.155:22 password">
@@ -14,6 +14,13 @@
         <serverdata>
           <mappings>
             <mapping local="$PROJECT_DIR$" web="/" />
+          </mappings>
+        </serverdata>
+      </paths>
+      <paths name="gillif@132.72.67.229:22 password">
+        <serverdata>
+          <mappings>
+            <mapping deploy="home/gillif/recsys" local="$PROJECT_DIR$" />
           </mappings>
         </serverdata>
       </paths>
