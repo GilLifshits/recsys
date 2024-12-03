@@ -1,5 +1,10 @@
 data_loaders/
 
+deployment.xml
+misc.xml
+NESCL.imi
+recsys.imi
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
